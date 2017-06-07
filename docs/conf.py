@@ -16,6 +16,13 @@
 import sys
 import os
 
+import docutils
+from packaging.version import Version
+
+# temporal workaround for sphinx-argparse still importing deprecated
+# sphinx.util.compat that causes problems with rc releases of docutils
+docutils.__version__ = Version(docutils.__version__).base_version
+
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -306,4 +313,3 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
-
